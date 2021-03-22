@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hansjovis.net</title>
+    <meta name="description"
+          content="A blog about web development, Artificial Intelligence and the open web.">
+    <!-- OpenGraph. -->
+    <meta property="og:title" content="hansjovis.net">
+    <meta property="og:description"
+          content="A blog about web development, Artificial Intelligence and the open web.">
+    <!-- Linked Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://hansjovis.net",
+                    "name": "hansjovis.net",
+                    "description": "A blog about web development, Artificial Intelligence and the open web."
+                }
+            ]
+        }
+    </script>
+    <!-- Styles. -->
+    <style>
+		:root {
+			--color-primary-l: 100%;
+			--color-secondary-l: 22%;
+
+			--color-tertiary-h: 20;
+			--color-tertiary-s: 100%;
+			--color-tertiary-l: 50%;
+
+			--color-primary: hsl(0, 0%, var(--color-primary-l));
+			--color-secondary: hsl(0, 0%, var(--color-secondary-l));
+			--color-tertiary: hsl(var(--color-tertiary-h), var(--color-tertiary-s), var(--color-tertiary-l));
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			height: 90vh;
+
+			font-family: sans-serif;
+
+			background-color: var(--color-secondary);
+			color: var(--color-primary);
+		}
+
+        main {
+            margin: 2em;
+        }
+
+		h1 {
+			color: var(--color-tertiary);
+		}
+    </style>
+</head>
+<body>
+<main>
+    <h1>hansjovis.net</h1>
+    <p>A blog about web development, Artificial Intelligence and the open web.</p>
+    <p><em>Coming soon</em></p>
+</main>
+</body>
+</html>
