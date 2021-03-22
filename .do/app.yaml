@@ -1,6 +1,7 @@
 name: hansjovis-html
 static_sites:
   - environment_slug: html
+    index_document: public/index.html
     github:
       branch: main
       deploy_on_push: true
