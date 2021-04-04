@@ -9,8 +9,6 @@
 }
 ```
 -------
-## What is the semantic web?
-
 The <dfn>semantic web</dfn> is an extension of the world wide web where **data** is interlinked rather than **documents**.
 
 ## What are the advantages of the semantic web?
