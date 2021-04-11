@@ -1,0 +1,14 @@
+{
+  "name": "hansjovis.net",
+  "version": "1.0.0-alpha1",
+  "description": "Source code for the hansjovis.net website.",
+  "main": "public/index.html",
+  "repository": "git@github.com:hansjovis/hansjovis.net.git",
+  "author": "Hans-Christiaan <hans-christiaan@yoast.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build-core": "tsc -b core",
+    "build": "yarn build-core && node core/dist/index.js --src='content'"
+  }
+}
