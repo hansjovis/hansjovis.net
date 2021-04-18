@@ -1,26 +1,41 @@
 import { readFileSync } from "fs";
+import { glob } from "glob";
 
-import { Entity } from "./model/Entity";
 import { parse } from "./parse";
-import { parseBreadcrumbs } from "./parse/breadcrumbs";
-
-const WEBSITE_NAME = "hansjovis.net";
-const SEP = "•";
+import Thing from "./model/Thing";
+import createWebPage from "./parse/webpage";
+import Node from "./model/Node";
 
 function read( path: string ): string {
-	return readFileSync( path, { encoding: "utf-8"  } );
+	return readFileSync( path, { encoding: "utf-8" } );
 }
 
-export default function load( path: string ): Entity {
-	const breadcrumbs = parseBreadcrumbs( path );
-	const entity = parse( read( path ) );
+function loadThing( path: string ): Thing {
+	return parse( read( path ), path );
+}
 
-	return  {
-		"@context": "https://schema.org/",
-		"@type": "WebPage",
-		"breadcrumbs": breadcrumbs,
-		"name": `${ entity.name } ${ SEP } ${ WEBSITE_NAME }`,
-		"description": entity.description,
-		"mainEntity": entity,
-	};
+export default function loadGraph( srcFolder: string ) {
+	glob( srcFolder + "/**/*.md", ( error, filePaths ) => {
+		if ( error ) {
+			console.error( error );
+			return;
+		}
+
+		const webpages = [];
+		const things: Node[] = [];
+
+		filePaths.forEach( path => {
+			const thing = loadThing( path );
+			things.push( thing );
+			webpages.push( createWebPage( thing, path ) );
+		} );
+
+		const graph = {
+			"@context": "https://schema.org/",
+			"@graph": [ ...things, ...webpages ]
+		}
+
+		// @ts-ignore
+		console.log( graph );
+	} );
 }
